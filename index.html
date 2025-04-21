@@ -294,6 +294,53 @@
             margin: 10px 0;
             font-size: 14px;
         }
+        
+        /* Training Environment Specs */
+        .training-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .spec-card {
+            background-color: #f8fafc;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .spec-title {
+            color: #4a5568;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .spec-title i {
+            margin-right: 8px;
+            font-size: 18px;
+            color: #4299e1;
+        }
+        
+        .spec-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a365d;
+        }
+        
+        .spec-details {
+            margin-top: 6px;
+            font-size: 13px;
+            color: #718096;
+        }
+        
+        @media (min-width: 768px) {
+            .training-specs {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -315,6 +362,42 @@
             <button class="dataset-filter path-filter" id="path-filter">PathMNIST</button>
             <button class="dataset-filter derma-filter" id="derma-filter">DermaMNIST</button>
             <button class="dataset-filter organ-filter" id="organ-filter">OrganAMNIST</button>
+        </div>
+        
+        <!-- Training Environment Card - NEW SECTION -->
+        <div class="card">
+            <h2>Training Environment</h2>
+            <div class="training-specs">
+                <div class="spec-card">
+                    <div class="spec-title">
+                        <i>📊</i> Training Steps
+                    </div>
+                    <div class="spec-value">2,000</div>
+                    <div class="spec-details">All models were trained with the same number of iterations</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">
+                        <i>🖥️</i> GPU Configuration
+                    </div>
+                    <div class="spec-value">2× NVIDIA A6000</div>
+                    <div class="spec-details">48GB VRAM per GPU</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">
+                        <i>📦</i> Batch Size
+                    </div>
+                    <div class="spec-value">64 per GPU</div>
+                    <div class="spec-details">Global batch size: 128</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">
+                        <i>⚙️</i> Framework
+                    </div>
+                    <div class="spec-value">PyTorch + FSDP & DDP</div>
+                    <div class="spec-details">Fully Sharded Data Parallelism</div>
+                    <div class="spec-details">Distributed Data Parallelism/div>
+                </div>
+            </div>
         </div>
         
         <!-- Main Chart -->
