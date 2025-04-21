@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DINO-MX Medical Image Classification Results Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #1a365d;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px; /* Increased spacing between cards */
+            position: relative;
+            z-index: 1;
+            overflow: visible;
+        }
+        .card h2 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #2d3748;
+            text-align: center;
+        }
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .tab.active {
+            background-color: #4299e1;
+            color: white;
+        }
+        .tab:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        .tab:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .dataset-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .dataset-filter {
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .dataset-filter.active {
+            color: white;
+        }
+        .all-filter.active {
+            background-color: #2d3748;
+        }
+        .blood-filter.active {
+            background-color: #f56565;
+        }
+        .path-filter.active {
+            background-color: #4299e1;
+        }
+        .derma-filter.active {
+            background-color: #48bb78;
+        }
+        .organ-filter.active {
+            background-color: #ecc94b;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            margin-bottom: 20px; /* Added margin below charts */
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .best-performers {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .dataset-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        .dataset-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .dataset-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #718096;
+        }
+        .stat-value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .stat-details {
+            font-size: 12px;
+        }
+        .findings-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .findings-list li {
+            margin-bottom: 8px;
+        }
+        /* Added clearfix for proper layout flow */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        /* Fixed spacing for cross-training section */
+        #cross-training-section {
+            margin-bottom: 60px; /* Extra spacing after cross-training chart */
+        }
+        /* Key findings section styling */
+        #key-findings-section {
+            clear: both; /* Ensures it starts on a new "row" */
+            margin-top: 40px; /* Extra margin above key findings */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DINO-MX Medical Image Classification Results Dashboard</h1>
+        </div>
+        
+        <!-- Tabs for Linear Probe vs KNN -->
+        <div class="tab-container">
+            <button class="tab active" id="linear-tab">Linear Probe</button>
+            <button class="tab" id="knn-tab">k-Nearest Neighbors</button>
+        </div>
+        
+        <!-- Dataset Filters -->
+        <div class="dataset-filters">
+            <button class="dataset-filter all-filter active" id="all-filter">All Datasets</button>
+            <button class="dataset-filter blood-filter" id="blood-filter">BloodMNIST</button>
+            <button class="dataset-filter path-filter" id="path-filter">PathMNIST</button>
+            <button class="dataset-filter derma-filter" id="derma-filter">DermaMNIST</button>
+            <button class="dataset-filter organ-filter" id="organ-filter">OrganAMNIST</button>
+        </div>
+        
+        <!-- Main Chart -->
+        <div class="card">
+            <h2 id="main-chart-title">Best Model Performance Across Datasets (Linear Probe)</h2>
+            <div class="chart-container">
+                <canvas id="main-chart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Grid Layout for Additional Charts -->
+        <div class="grid">
+            <!-- Best Performers Card -->
+            <div class="card">
+                <h2>Best Performers by Dataset</h2>
+                <div class="best-performers" id="best-performers">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Radar Chart -->
+            <div class="card">
+                <h2>Linear vs kNN Performance (%)</h2>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="radar-chart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <!-- Benchmark Comparison -->
+            <div class="card">
+                <h2>Comparison with State-of-the-Art</h2>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="benchmark-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Computational Efficiency -->
+            <div class="card">
+                <h2>Computational Efficiency</h2>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="efficiency-chart"></canvas>
+                </div>
+                <div style="text-align: center; font-size: 12px; margin-top: 10px;">Models grouped by adaptation strategy</div>
+            </div>
+        </div>
+        
+        <!-- Cross-Training Results with extra margin -->
+        <div id="cross-training-section" class="card clearfix">
+            <h2>Cross-Training Results (PathMNIST)</h2>
+            <div class="chart-container" style="height: 300px;">
+                <canvas id="cross-training-chart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Key Findings with clear positioning -->
+        <div id="key-findings-section" class="card clearfix">
+            <h2>Key Findings</h2>
+            <ul class="findings-list">
+                <li>k-NN classification consistently outperforms linear probing across all datasets</li>
+                <li>DINOv2 models perform comparably to DINOv1 counterparts</li>
+                <li>Best performance observed on PathMNIST, reaching 100% accuracy with kNN</li>
+                <li>LoRA and Layer Freezing offer compelling alternatives with only 1-3% accuracy decrease</li>
+                <li>LoRA provides ~35-40% reduction in training time and memory requirements</li>
+                <li>DINOv1 models show resilience when trained with DINOv2 techniques</li>
+                <li>DINO-MX outperforms state-of-the-art on PathMNIST dataset</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Define colors
+        const colors = {
+            Pretrained: 'rgba(136, 132, 216, 0.7)',
+            Standard: 'rgba(130, 202, 157, 0.7)',
+            LoRA: 'rgba(255, 198, 88, 0.7)',
+            LayerFreezing: 'rgba(255, 128, 66, 0.7)'
+        };
+        
+        const datasetColors = {
+            BloodMNIST: 'rgba(255, 107, 107, 0.7)',
+            PathMNIST: 'rgba(72, 219, 251, 0.7)',
+            DermaMNIST: 'rgba(29, 209, 161, 0.7)',
+            OrganAMNIST: 'rgba(254, 202, 87, 0.7)'
+        };
+        
+        // Define the data
+        const linearProbeData = {
+            BloodMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.53, Standard: 0.91, LoRA: 0.67, LayerFreezing: 0.89 },
+                { model: 'dino-vitb16', Pretrained: 0.71, Standard: 0.95, LoRA: 0.81, LayerFreezing: 0.95 },
+                { model: 'dinov2-small', Pretrained: 0.34, Standard: 0.93, LoRA: 0.54, LayerFreezing: 0.94 },
+                { model: 'dinov2-base', Pretrained: 0.54, Standard: 0.95, LoRA: 0.80, LayerFreezing: 0.95 }
+            ],
+            DermaMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.66, Standard: 0.67, LoRA: 0.66, LayerFreezing: 0.67 },
+                { model: 'dino-vitb16', Pretrained: 0.67, Standard: 0.71, LoRA: 0.66, LayerFreezing: 0.69 },
+                { model: 'dinov2-small', Pretrained: 0.66, Standard: 0.69, LoRA: 0.65, LayerFreezing: 0.69 },
+                { model: 'dinov2-base', Pretrained: 0.68, Standard: 0.71, LoRA: 0.69, LayerFreezing: 0.71 }
+            ],
+            OrganAMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.57, Standard: 0.85, LoRA: 0.61, LayerFreezing: 0.85 },
+                { model: 'dino-vitb16', Pretrained: 0.75, Standard: 0.92, LoRA: 0.78, LayerFreezing: 0.91 },
+                { model: 'dinov2-small', Pretrained: 0.64, Standard: 0.86, LoRA: 0.71, LayerFreezing: 0.83 },
+                { model: 'dinov2-base', Pretrained: 0.75, Standard: 0.88, LoRA: 0.80, LayerFreezing: 0.88 }
+            ],
+            PathMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.73, Standard: 0.91, LoRA: 0.76, LayerFreezing: 0.89 },
+                { model: 'dino-vitb16', Pretrained: 0.88, Standard: 0.94, LoRA: 0.89, LayerFreezing: 0.94 },
+                { model: 'dinov2-small', Pretrained: 0.62, Standard: 0.92, LoRA: 0.83, LayerFreezing: 0.92 },
+                { model: 'dinov2-base', Pretrained: 0.76, Standard: 0.95, LoRA: 0.83, LayerFreezing: 0.95 }
+            ]
+        };
+        
+        const knnData = {
+            BloodMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.97, Standard: 0.99, LoRA: 0.98, LayerFreezing: 0.99 },
+                { model: 'dino-vitb16', Pretrained: 0.97, Standard: 0.99, LoRA: 0.99, LayerFreezing: 0.99 },
+                { model: 'dinov2-small', Pretrained: 0.94, Standard: 0.99, LoRA: 0.98, LayerFreezing: 0.99 },
+                { model: 'dinov2-base', Pretrained: 0.94, Standard: 0.99, LoRA: 0.98, LayerFreezing: 0.99 }
+            ],
+            DermaMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.79, Standard: 0.78, LoRA: 0.78, LayerFreezing: 0.77 },
+                { model: 'dino-vitb16', Pretrained: 0.79, Standard: 0.80, LoRA: 0.79, LayerFreezing: 0.79 },
+                { model: 'dinov2-small', Pretrained: 0.76, Standard: 0.76, LoRA: 0.76, LayerFreezing: 0.76 },
+                { model: 'dinov2-base', Pretrained: 0.76, Standard: 0.75, LoRA: 0.76, LayerFreezing: 0.76 }
+            ],
+            OrganAMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.95, Standard: 0.97, LoRA: 0.96, LayerFreezing: 0.96 },
+                { model: 'dino-vitb16', Pretrained: 0.96, Standard: 0.97, LoRA: 0.97, LayerFreezing: 0.97 },
+                { model: 'dinov2-small', Pretrained: 0.94, Standard: 0.96, LoRA: 0.96, LayerFreezing: 0.96 },
+                { model: 'dinov2-base', Pretrained: 0.92, Standard: 0.97, LoRA: 0.93, LayerFreezing: 0.97 }
+            ],
+            PathMNIST: [
+                { model: 'dino-vits16', Pretrained: 0.99, Standard: 0.99, LoRA: 0.99, LayerFreezing: 0.99 },
+                { model: 'dino-vitb16', Pretrained: 0.99, Standard: 0.99, LoRA: 1.00, LayerFreezing: 1.00 },
+                { model: 'dinov2-small', Pretrained: 0.98, Standard: 0.99, LoRA: 0.99, LayerFreezing: 0.99 },
+                { model: 'dinov2-base', Pretrained: 0.98, Standard: 0.99, LoRA: 0.99, LayerFreezing: 0.99 }
+            ]
+        };
+        
+        // Benchmark data
+        const benchmarkData = [
+            { dataset: 'BloodMNIST', benchmark: 'Google AutoML Vision', benchmarkAcc: 0.966, dinoAcc: 0.950 },
+            { dataset: 'PathMNIST', benchmark: 'ResNet-50 (28)', benchmarkAcc: 0.911, dinoAcc: 0.950 },
+            { dataset: 'DermaMNIST', benchmark: 'Google AutoML Vision', benchmarkAcc: 0.768, dinoAcc: 0.710 },
+            { dataset: 'OrganAMNIST', benchmark: 'ResNet-18 (224)', benchmarkAcc: 0.951, dinoAcc: 0.920 }
+        ];
+        
+        // Computational efficiency data
+        const computationalData = [
+            { model: 'dino-vitb16', adaptation: 'Standard', time: 25, memory: 19.3 },
+            { model: 'dino-vitb16', adaptation: 'LoRA', time: 19, memory: 15.0 },
+            { model: 'dino-vitb16', adaptation: 'Layer Freezing', time: 18, memory: 16.2 },
+            { model: 'dinov2-base', adaptation: 'Standard', time: 37, memory: 28.5 },
+            { model: 'dinov2-base', adaptation: 'LoRA', time: 28, memory: 22.3 },
+            { model: 'dinov2-base', adaptation: 'Layer Freezing', time: 23.8, memory: 25.0 }
+        ];
+        
+        // Cross-training results data
+        const crossTrainingData = [
+            { config: 'DINOv1 (vitb16)', standard: 0.94, crossTraining: 0.93 },
+            { config: 'DINOv2 (base)', standard: 0.95, crossTraining: 0.82 }
+        ];
+        
+        // State variables
+        let activeTab = 'linear';
+        let activeDataset = 'all';
+        let mainChart = null;
+        let radarChart = null;
+        let benchmarkChart = null;
+        let efficiencyChart = null;
+        let crossTrainingChart = null;
+        
+        // Calculate best performers
+        function getBestPerformers() {
+            const results = {};
+            const datasets = ['BloodMNIST', 'DermaMNIST', 'OrganAMNIST', 'PathMNIST'];
+            
+            datasets.forEach(dataset => {
+                let bestLinearAcc = 0;
+                let bestLinearModel = '';
+                let bestLinearStrategy = '';
+                
+                let bestKnnAcc = 0;
+                let bestKnnModel = '';
+                let bestKnnStrategy = '';
+                
+                linearProbeData[dataset].forEach(item => {
+                    Object.entries(item).forEach(([key, value]) => {
+                        if (key !== 'model' && value > bestLinearAcc) {
+                            bestLinearAcc = value;
+                            bestLinearModel = item.model;
+                            bestLinearStrategy = key;
+                        }
+                    });
+                });
+                
+                knnData[dataset].forEach(item => {
+                    Object.entries(item).forEach(([key, value]) => {
+                        if (key !== 'model' && value > bestKnnAcc) {
+                            bestKnnAcc = value;
+                            bestKnnModel = item.model;
+                            bestKnnStrategy = key;
+                        }
+                    });
+                });
+                
+                results[dataset] = {
+                    linear: { model: bestLinearModel, strategy: bestLinearStrategy, accuracy: bestLinearAcc },
+                    knn: { model: bestKnnModel, strategy: bestKnnStrategy, accuracy: bestKnnAcc }
+                };
+            });
+            
+            return results;
+        }
+        
+        // Prepare model comparison data
+        function prepareModelComparisonData() {
+            const models = ['dino-vits16', 'dino-vitb16', 'dinov2-small', 'dinov2-base'];
+            const datasets = ['BloodMNIST', 'DermaMNIST', 'OrganAMNIST', 'PathMNIST'];
+            const result = [];
+            
+            models.forEach(model => {
+                const modelResult = { model };
+                
+                datasets.forEach(dataset => {
+                    const dataSource = activeTab === 'linear' ? linearProbeData : knnData;
+                    const modelData = dataSource[dataset].find(item => item.model === model);
+                    
+                    // Get best value for this model across adaptation strategies
+                    const bestValue = Math.max(
+                        modelData.Pretrained,
+                        modelData.Standard,
+                        modelData.LoRA,
+                        modelData.LayerFreezing
+                    );
+                    
+                    modelResult[dataset] = bestValue;
+                });
+                
+                result.push(modelResult);
+            });
+            
+            return result;
+        }
+        
+        // Initialize charts
+        function initCharts() {
+            updateMainChart();
+            initRadarChart();
+            initBenchmarkChart();
+            initEfficiencyChart();
+            initCrossTrainingChart();
+            updateBestPerformersCard();
+        }
+        
+        function updateMainChart() {
+            const ctx = document.getElementById('main-chart').getContext('2d');
+            
+            // Destroy previous chart if it exists
+            if (mainChart) {
+                mainChart.destroy();
+            }
+            
+            let data, options;
+            
+            if (activeDataset === 'all') {
+                // When "All Datasets" is selected - show model comparison
+                const modelData = prepareModelComparisonData();
+                
+                data = {
+                    labels: modelData.map(item => item.model),
+                    datasets: [
+                        {
+                            label: 'BloodMNIST',
+                            data: modelData.map(item => item.BloodMNIST * 100),
+                            backgroundColor: datasetColors.BloodMNIST,
+                            borderColor: 'rgba(255, 107, 107, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'PathMNIST',
+                            data: modelData.map(item => item.PathMNIST * 100),
+                            backgroundColor: datasetColors.PathMNIST,
+                            borderColor: 'rgba(72, 219, 251, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'DermaMNIST',
+                            data: modelData.map(item => item.DermaMNIST * 100),
+                            backgroundColor: datasetColors.DermaMNIST,
+                            borderColor: 'rgba(29, 209, 161, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'OrganAMNIST',
+                            data: modelData.map(item => item.OrganAMNIST * 100),
+                            backgroundColor: datasetColors.OrganAMNIST,
+                            borderColor: 'rgba(254, 202, 87, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                };
+                
+                options = {
+    responsive: true,
+    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            min: 0,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Accuracy (%)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `Best Model Performance Across Datasets (${activeTab === 'linear' ? 'Linear Probe' : 'kNN'})`
+                        },
+                        // Removed any watermark plugin or options
+                    }
+                };
+                
+                document.getElementById('main-chart-title').textContent = 
+                    `Best Model Performance Across Datasets (${activeTab === 'linear' ? 'Linear Probe' : 'kNN'})`;
+                
+            } else {
+                // When specific dataset is selected
+                const dataSource = activeTab === 'linear' ? linearProbeData : knnData;
+                const datasetResults = dataSource[activeDataset];
+                
+                data = {
+                    labels: datasetResults.map(item => item.model),
+                    datasets: [
+                        {
+                            label: 'Pretrained',
+                            data: datasetResults.map(item => item.Pretrained * 100),
+                            backgroundColor: colors.Pretrained,
+                            borderColor: 'rgba(136, 132, 216, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Standard',
+                            data: datasetResults.map(item => item.Standard * 100),
+                            backgroundColor: colors.Standard,
+                            borderColor: 'rgba(130, 202, 157, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'LoRA',
+                            data: datasetResults.map(item => item.LoRA * 100),
+                            backgroundColor: colors.LoRA,
+                            borderColor: 'rgba(255, 198, 88, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Layer Freezing',
+                            data: datasetResults.map(item => item.LayerFreezing * 100),
+                            backgroundColor: colors.LayerFreezing,
+                            borderColor: 'rgba(255, 128, 66, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                };
+                
+                options = {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            min: 0,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Accuracy (%)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `${activeDataset} Performance (${activeTab === 'linear' ? 'Linear Probe' : 'kNN'})`
+                        },
+                        // Removed any watermark plugin or options
+                    }
+                };
+                
+                document.getElementById('main-chart-title').textContent = 
+                    `${activeDataset} Performance by Model and Adaptation Strategy (${activeTab === 'linear' ? 'Linear Probe' : 'kNN'})`;
+            }
+            
+            // Create new chart with modified options to ensure no watermarks
+            mainChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        }
+        
+        function initRadarChart() {
+            const ctx = document.getElementById('radar-chart').getContext('2d');
+            const bestPerformers = getBestPerformers();
+            
+            const radarData = {
+                labels: ['BloodMNIST', 'DermaMNIST', 'OrganAMNIST', 'PathMNIST'],
+                datasets: [
+                    {
+                        label: 'Linear Probe',
+                        data: [
+                            bestPerformers.BloodMNIST.linear.accuracy * 100,
+                            bestPerformers.DermaMNIST.linear.accuracy * 100,
+                            bestPerformers.OrganAMNIST.linear.accuracy * 100,
+                            bestPerformers.PathMNIST.linear.accuracy * 100
+                        ],
+                        backgroundColor: 'rgba(136, 132, 216, 0.2)',
+                        borderColor: 'rgba(136, 132, 216, 1)',
+                        pointBackgroundColor: 'rgba(136, 132, 216, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(136, 132, 216, 1)'
+                    },
+                    {
+                        label: 'k-NN',
+                        data: [
+                            bestPerformers.BloodMNIST.knn.accuracy * 100,
+                            bestPerformers.DermaMNIST.knn.accuracy * 100,
+                            bestPerformers.OrganAMNIST.knn.accuracy * 100,
+                            bestPerformers.PathMNIST.knn.accuracy * 100
+                        ],
+                        backgroundColor: 'rgba(130, 202, 157, 0.2)',
+                        borderColor: 'rgba(130, 202, 157, 1)',
+                        pointBackgroundColor: 'rgba(130, 202, 157, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(130, 202, 157, 1)'
+                    }
+                ]
+            };
+            
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: radarData,
+                options: {
+                    scales: {
+                        r: {
+                            min: 60,
+                            max: 100,
+                            ticks: {
+                                stepSize: 10
+                            }
+                        }
+                    },
+                    plugins: {
+                        // Removed any watermark plugin or options
+                    }
+                }
+            });
+        }
+        
+        function initBenchmarkChart() {
+            const ctx = document.getElementById('benchmark-chart').getContext('2d');
+            
+            const data = {
+                labels: benchmarkData.map(item => item.dataset),
+                datasets: [
+                    {
+                        label: 'Benchmark',
+                        data: benchmarkData.map(item => item.benchmarkAcc * 100),
+                        backgroundColor: 'rgba(136, 132, 216, 0.7)',
+                        borderColor: 'rgba(136, 132, 216, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'DINO-MX',
+                        data: benchmarkData.map(item => item.dinoAcc * 100),
+                        backgroundColor: 'rgba(130, 202, 157, 0.7)',
+                        borderColor: 'rgba(130, 202, 157, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+            
+            benchmarkChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            min: 60,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Accuracy (%)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        // Removed any watermark plugin or options
+                    }
+                }
+            });
+        }
+        
+        function initEfficiencyChart() {
+            const ctx = document.getElementById('efficiency-chart').getContext('2d');
+            
+            const data = {
+                labels: ['Standard', 'LoRA', 'Layer Freezing'],
+                datasets: [
+                    {
+                        label: 'Training Time (mins)',
+                        data: [
+                            (computationalData[0].time + computationalData[3].time) / 2,
+                            (computationalData[1].time + computationalData[4].time) / 2,
+                            (computationalData[2].time + computationalData[5].time) / 2
+                        ],
+                        backgroundColor: 'rgba(136, 132, 216, 0.7)',
+                        borderColor: 'rgba(136, 132, 216, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Memory Usage (GB)',
+                        data: [
+                            (computationalData[0].memory + computationalData[3].memory) / 2,
+                            (computationalData[1].memory + computationalData[4].memory) / 2,
+                            (computationalData[2].memory + computationalData[5].memory) / 2
+                        ],
+                        backgroundColor: 'rgba(130, 202, 157, 0.7)',
+                        borderColor: 'rgba(130, 202, 157, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1'
+                    }
+                ]
+            };
+            
+            efficiencyChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Training Time (mins)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Memory Usage (GB)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        // Removed any watermark plugin or options
+                    }
+                }
+            });
+        }
+        
+        function initCrossTrainingChart() {
+            const ctx = document.getElementById('cross-training-chart').getContext('2d');
+            
+            const data = {
+                labels: crossTrainingData.map(item => item.config),
+                datasets: [
+                    {
+                        label: 'Standard Approach',
+                        data: crossTrainingData.map(item => item.standard * 100),
+                        backgroundColor: 'rgba(136, 132, 216, 0.7)',
+                        borderColor: 'rgba(136, 132, 216, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Cross-Training',
+                        data: crossTrainingData.map(item => item.crossTraining * 100),
+                        backgroundColor: 'rgba(130, 202, 157, 0.7)',
+                        borderColor: 'rgba(130, 202, 157, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+            
+            crossTrainingChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        y: {
+            min: 60,  // Verilerinize göre uygun min değeri
+            max: 100, // Verilerinize göre uygun max değeri
+            beginAtZero: false
+        }
+    }
+}
+            });
+        }
+        
+        function updateBestPerformersCard() {
+            const bestPerformers = getBestPerformers();
+            const container = document.getElementById('best-performers');
+            container.innerHTML = '';
+            
+            Object.entries(bestPerformers).forEach(([dataset, data]) => {
+                const datasetColor = dataset === 'BloodMNIST' 
+                                    ? '#f56565' 
+                                    : dataset === 'PathMNIST' 
+                                        ? '#4299e1' 
+                                        : dataset === 'DermaMNIST' 
+                                            ? '#48bb78' 
+                                            : '#ecc94b';
+                
+                const card = document.createElement('div');
+                card.className = 'dataset-card';
+                card.style.borderLeftColor = datasetColor;
+                card.style.borderLeftWidth = '4px';
+                
+                card.innerHTML = `
+                    <div class="dataset-title">${dataset}</div>
+                    <div class="dataset-stats">
+                        <div>
+                            <div class="stat-label">Linear Probe</div>
+                            <div class="stat-value">${(data.linear.accuracy * 100).toFixed(1)}%</div>
+                            <div class="stat-details">
+                                ${data.linear.model}, ${data.linear.strategy}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stat-label">k-NN</div>
+                            <div class="stat-value">${(data.knn.accuracy * 100).toFixed(1)}%</div>
+                            <div class="stat-details">
+                                ${data.knn.model}, ${data.knn.strategy}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // Event Listeners
+        document.getElementById('linear-tab').addEventListener('click', function() {
+            document.getElementById('linear-tab').classList.add('active');
+            document.getElementById('knn-tab').classList.remove('active');
+            activeTab = 'linear';
+            updateMainChart();
+        });
+        
+        document.getElementById('knn-tab').addEventListener('click', function() {
+            document.getElementById('knn-tab').classList.add('active');
+            document.getElementById('linear-tab').classList.remove('active');
+            activeTab = 'knn';
+            updateMainChart();
+        });
+        
+        // Dataset filter buttons
+        const datasetFilters = [
+            { id: 'all-filter', value: 'all', className: 'all-filter' },
+            { id: 'blood-filter', value: 'BloodMNIST', className: 'blood-filter' },
+            { id: 'path-filter', value: 'PathMNIST', className: 'path-filter' },
+            { id: 'derma-filter', value: 'DermaMNIST', className: 'derma-filter' },
+            { id: 'organ-filter', value: 'OrganAMNIST', className: 'organ-filter' }
+        ];
+        
+        datasetFilters.forEach(filter => {
+            document.getElementById(filter.id).addEventListener('click', function() {
+                // Remove active class from all filters
+                datasetFilters.forEach(f => {
+                    document.getElementById(f.id).classList.remove('active');
+                });
+                
+                // Add active class to clicked filter
+                this.classList.add('active');
+                activeDataset = filter.value;
+                updateMainChart();
+            });
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initCharts);
+    </script>
+</body>
+</html>
