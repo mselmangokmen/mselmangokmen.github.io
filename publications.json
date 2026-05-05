@@ -1,0 +1,122 @@
+[
+  {
+    "title": "DINO-LG: Enhancing vision transformers with label guidance for coronary artery calcium detection",
+    "authors": "Mahmut Selman Gokmen and Caner Ozcan and Moneera N Haque and Steve W Leung and Seth Parker and Brent Seales and Cody Bumgardner",
+    "venue": "Medical & Biological Engineering & Computing",
+    "year": "2026",
+    "url": "https://link.springer.com/article/10.1007/s11517-026-03523-1",
+    "eprint_url": "",
+    "citations": 4,
+    "abstract": "Coronary artery disease (CAD), one of the leading causes of mortality worldwide, necessitates effective risk assessment strategies, with coronary artery calcium (CAC) scoring via computed tomography ("
+  },
+  {
+    "title": "Curriculum-Driven 3D CT Report Generation via Language-Free Visual Grafting and Zone-Constrained Compression",
+    "authors": "VK Bumgardner and Mitchell A Klusty and Mahmut S Gokmen and Evan W Damron",
+    "venue": "arXiv preprint arXiv:2603.23308",
+    "year": "2026",
+    "url": "https://arxiv.org/abs/2603.23308",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Automated radiology report generation from 3D computed tomography (CT) volumes is challenging due to extreme sequence lengths, severe class imbalance, and the tendency of large language models (LLMs) "
+  },
+  {
+    "title": "A Framework for Cross-Domain Generalization in Coronary Artery Calcium Scoring Across Gated and Non-Gated Computed Tomography",
+    "authors": "Mahmut S Gokmen and Moneera N Haque and Steve W Leung and Caroline N Leach and Seth Parker and Stephen B Hobbs and Vincent L Sorrell and W Brent Seales and VK Bumgardner",
+    "venue": "arXiv preprint arXiv:2602.21935",
+    "year": "2026",
+    "url": "https://arxiv.org/abs/2602.21935",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Coronary artery calcium (CAC) scoring is a key predictor of cardiovascular risk, but it relies on ECG-gated CT scans, restricting its use to specialized cardiac imaging settings. We introduce an autom"
+  },
+  {
+    "title": "Lung microbial dysregulation and TNF inhibition contribute to worsened nontuberculous mycobacterial lung disease",
+    "authors": "Ethan Napier and Isaac Cinco and Ethan Stuart and Michael Davies and Caroline Leach and Evan Damron and Mahmut Gokmen and Amy Leestemaker-Palmer and Stephanie Nuss and Cody Bumgardner and Steven Kohama and Luiz Bermudez and Kevin Winthrop and Cristina Fuss and Eliot Spindel and Ilhem Messaoudi",
+    "venue": "",
+    "year": "2026",
+    "url": "https://www.researchsquare.com/article/rs-8703262/latest",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Nontuberculous mycobacteria (NTM) are ubiquitous bacteria that cause a spectrum of diseases, most notably pulmonary disease (NTMPD). The host factors contributing to the heightened susceptibility and "
+  },
+  {
+    "title": "An effective image despeckling and reconstruction approach using U-Net based model and comparative analysis: M. Gokmen, B. Arslan, C. Bumgardner, A. Imran",
+    "authors": "MS Gokmen and Bilgehan Arslan and C Bumgardner and A Imran",
+    "venue": "Scientific Reports",
+    "year": "2025",
+    "url": "https://www.nature.com/articles/s41598-025-10220-w",
+    "eprint_url": "",
+    "citations": 2,
+    "abstract": "U-Net-based deep learning models have garnered significant attention in recent years due to their strong denoising capabilities in image restoration tasks. This study critically evaluates both the str"
+  },
+  {
+    "title": "A histopathology aware DINO model with attention based representation enhancement",
+    "authors": "Merve Ozkan and Caner Ozcan and VK Cody Bumgardner and Mahmut S Gokmen",
+    "venue": "Scientific Reports",
+    "year": "2025",
+    "url": "https://www.nature.com/articles/s41598-025-31438-8",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Histopathological image analysis plays a critical role in modern medical diagnostics, particularly in the detection and classification of various types of cancer. This study proposes a method called H"
+  },
+  {
+    "title": "Magnification-Aware Distillation (MAD): A Self-Supervised Framework for Unified Representation Learning in Gigapixel Whole-Slide Images",
+    "authors": "Mahmut S Gokmen and Mitchell A Klusty and Peter T Nelson and Allison M Neltner and Sen-Ching Samson Cheung and Thomas M Pearce and David A Gutman and Brittany N Dugger and Devavrat S Bisht and Margaret E Flanagan and VK Bumgardner",
+    "venue": "arXiv preprint arXiv:2512.14796",
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2512.14796",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Whole-slide images (WSIs) contain tissue information distributed across multiple magnification levels, yet most self-supervised methods treat these scales as independent views. This separation prevent"
+  },
+  {
+    "title": "Vision Foundry: A System for Training Foundational Vision AI Models",
+    "authors": "Mahmut S Gokmen and Mitchell A Klusty and Evan W Damron and W Vaiden Logan and Aaron D Mullen and Caroline N Leach and Emily B Collier and Samuel E Armstrong and VK Bumgardner",
+    "venue": "arXiv preprint arXiv:2512.11837",
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2512.11837",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Self-supervised learning (SSL) leverages vast unannotated medical datasets, yet steep technical barriers limit adoption by clinical researchers. We introduce Vision Foundry, a code-free, HIPAA-complia"
+  },
+  {
+    "title": "Deep Learning Based Defect Detection and Quality Classification on Lamella Pieces Used in Solid Wood Panel Production",
+    "authors": "Merve Ozkan and Caner Ozcan and Mahmut Selman Gokmen",
+    "venue": "Operations Research Forum",
+    "year": "2025",
+    "url": "https://link.springer.com/article/10.1007/s43069-025-00534-w",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "In the solid wood panel industry, combining lamella pieces of consistent quality is critical for final product performance. However, most manufacturers still rely on manual classification by quality c"
+  },
+  {
+    "title": "DINO-MX: A Modular & Flexible Framework for Self-Supervised Learning",
+    "authors": "Mahmut Selman Gokmen and Cody Bumgardner",
+    "venue": "arXiv preprint arXiv:2511.01610",
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2511.01610",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Vision Foundation Models (VFMs) have advanced representation learning through self-supervised methods. However, existing training pipelines are often inflexible, domain-specific, or computationally ex"
+  },
+  {
+    "title": "Poisson Flow Consistency Training",
+    "authors": "Anthony Zhang and Mahmut Gokmen and Dennis Hein and Rongjun Ge and Wenjun Xia and Ge Wang and Jin Chen",
+    "venue": "arXiv preprint arXiv:2510.21857",
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2510.21857",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "The Poisson Flow Consistency Model (PFCM) is a consistency-style model based on the robust Poisson Flow Generative Model++ (PFGM++) which has achieved success in unconditional image generation and CT "
+  },
+  {
+    "title": "Kinect Calibration and Data Optimization For Anthropometric Parameters",
+    "authors": "Mahmut S Gokmen and Mehmet Akbaba and Oguz Findik",
+    "venue": "arXiv preprint arXiv:2409.08847",
+    "year": "2024",
+    "url": "https://arxiv.org/abs/2409.08847",
+    "eprint_url": "",
+    "citations": 1,
+    "abstract": "Recently, through development of several 3d vision systems, widely used in various applications, medical and biometric fields. Microsoft kinect sensor have been most of used camera among 3d vision sys"
+  }
+]
