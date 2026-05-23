@@ -46,7 +46,7 @@
     "year": "2025",
     "url": "https://www.nature.com/articles/s41598-025-10220-w",
     "eprint_url": "",
-    "citations": 2,
+    "citations": 3,
     "abstract": "U-Net-based deep learning models have garnered significant attention in recent years due to their strong denoising capabilities in image restoration tasks. This study critically evaluates both the str"
   },
   {
@@ -118,5 +118,15 @@
     "eprint_url": "",
     "citations": 1,
     "abstract": "Recently, through development of several 3d vision systems, widely used in various applications, medical and biometric fields. Microsoft kinect sensor have been most of used camera among 3d vision sys"
+  },
+  {
+    "title": "A Specification-Driven Framework for Self-Supervised Learning in Specialized Vision Domains",
+    "authors": "Mahmut S Gokmen",
+    "venue": "",
+    "year": "",
+    "url": "https://uknowledge.uky.edu/cs_etds/159/",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Self-supervised learning (SSL) has emerged as a principled approach to visual representation learning that derives supervisory signal directly from unlabeled data, enabling foundation models to be tra"
   }
 ]
