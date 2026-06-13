@@ -6,7 +6,7 @@
     "year": "2026",
     "url": "https://link.springer.com/article/10.1007/s11517-026-03523-1",
     "eprint_url": "",
-    "citations": 4,
+    "citations": 5,
     "abstract": "Coronary artery disease (CAD), one of the leading causes of mortality worldwide, necessitates effective risk assessment strategies, with coronary artery calcium (CAC) scoring via computed tomography ("
   },
   {
@@ -16,8 +16,18 @@
     "year": "2026",
     "url": "https://arxiv.org/abs/2603.23308",
     "eprint_url": "",
-    "citations": 0,
+    "citations": 1,
     "abstract": "Automated radiology report generation from 3D computed tomography (CT) volumes is challenging due to extreme sequence lengths, severe class imbalance, and the tendency of large language models (LLMs) "
+  },
+  {
+    "title": "DALE-CT: Depth-Aware Foundation Models for Computed Tomography",
+    "authors": "Evan W Damron and Mahmut S Gokmen and Mitchell A Klusty and Caroline N Leach and Emily B Collier and VK Bumgardner",
+    "venue": "arXiv preprint arXiv:2606.07775",
+    "year": "2026",
+    "url": "https://arxiv.org/abs/2606.07775",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Recent breakthroughs in self-supervised learning (SSL), such as the Latent-Euclidean Joint-Embedding Predictive Architecture (LeJEPA), alongside successes in integrating visual encoders with language "
   },
   {
     "title": "A Framework for Cross-Domain Generalization in Coronary Artery Calcium Scoring Across Gated and Non-Gated Computed Tomography",
@@ -46,7 +56,7 @@
     "year": "2025",
     "url": "https://www.nature.com/articles/s41598-025-10220-w",
     "eprint_url": "",
-    "citations": 4,
+    "citations": 5,
     "abstract": "U-Net-based deep learning models have garnered significant attention in recent years due to their strong denoising capabilities in image restoration tasks. This study critically evaluates both the str"
   },
   {
