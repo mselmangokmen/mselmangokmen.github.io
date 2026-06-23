@@ -31,13 +31,23 @@
   },
   {
     "title": "A Framework for Cross-Domain Generalization in Coronary Artery Calcium Scoring Across Gated and Non-Gated Computed Tomography",
-    "authors": "Mahmut S Gokmen and Moneera N Haque and Steve W Leung and Caroline N Leach and Seth Parker and Stephen B Hobbs and Vincent L Sorrell and W Brent Seales and VK Bumgardner",
-    "venue": "arXiv preprint arXiv:2602.21935",
+    "authors": "Mahmut S Gokmen and Moneera N Haque and Steve W Leung and Caroline N Leach and Seth Parker and Stephen B Hobbs and Mary E Oates and Vincent L Sorrell and W Brent Seales and VK Cody Bumgardner",
+    "venue": "AMIA Summits on Translational Science Proceedings",
     "year": "2026",
-    "url": "https://arxiv.org/abs/2602.21935",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13274280/",
     "eprint_url": "",
     "citations": 0,
-    "abstract": "Coronary artery calcium (CAC) scoring is a key predictor of cardiovascular risk, but it relies on ECG-gated CT scans, restricting its use to specialized cardiac imaging settings. We introduce an autom"
+    "abstract": "Coronary artery calcium (CAC) scoring is a key predictor of cardiovascular risk, but relies on ECG-gated CT scans, restricting its use to specialized cardiac imaging settings. We introduce an automate"
+  },
+  {
+    "title": "Vision Foundry: A System for Training Foundational Vision AI Models",
+    "authors": "Mahmut S Gokmen and Mitchell A Klusty and Evan W Damron and W Vaiden Logan and Aaron D Mullen and Caroline N Leach and Emily B Collier and Samuel E Armstrong and VK Cody Bumgardner",
+    "venue": "AMIA Summits on Translational Science Proceedings",
+    "year": "2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13274312/",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Self-supervised learning (SSL) leverages vast unannotated medical datasets, yet steep technical barriers limit adoption by clinical researchers. We introduce Vision Foundry, a code-free, HIPAA-complia"
   },
   {
     "title": "Lung microbial dysregulation and TNF inhibition contribute to worsened nontuberculous mycobacterial lung disease",
@@ -60,6 +70,16 @@
     "abstract": "U-Net-based deep learning models have garnered significant attention in recent years due to their strong denoising capabilities in image restoration tasks. This study critically evaluates both the str"
   },
   {
+    "title": "DINO-MX: A Modular & Flexible Framework for Self-Supervised Learning",
+    "authors": "Mahmut Selman Gokmen and Cody Bumgardner",
+    "venue": "arXiv preprint arXiv:2511.01610",
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2511.01610",
+    "eprint_url": "",
+    "citations": 1,
+    "abstract": "Vision Foundation Models (VFMs) have advanced representation learning through self-supervised methods. However, existing training pipelines are often inflexible, domain-specific, or computationally ex"
+  },
+  {
     "title": "A histopathology aware DINO model with attention based representation enhancement",
     "authors": "Merve Ozkan and Caner Ozcan and VK Cody Bumgardner and Mahmut S Gokmen",
     "venue": "Scientific Reports",
@@ -80,16 +100,6 @@
     "abstract": "Whole-slide images (WSIs) contain tissue information distributed across multiple magnification levels, yet most self-supervised methods treat these scales as independent views. This separation prevent"
   },
   {
-    "title": "Vision Foundry: A System for Training Foundational Vision AI Models",
-    "authors": "Mahmut S Gokmen and Mitchell A Klusty and Evan W Damron and W Vaiden Logan and Aaron D Mullen and Caroline N Leach and Emily B Collier and Samuel E Armstrong and VK Bumgardner",
-    "venue": "arXiv preprint arXiv:2512.11837",
-    "year": "2025",
-    "url": "https://arxiv.org/abs/2512.11837",
-    "eprint_url": "",
-    "citations": 0,
-    "abstract": "Self-supervised learning (SSL) leverages vast unannotated medical datasets, yet steep technical barriers limit adoption by clinical researchers. We introduce Vision Foundry, a code-free, HIPAA-complia"
-  },
-  {
     "title": "Deep Learning Based Defect Detection and Quality Classification on Lamella Pieces Used in Solid Wood Panel Production",
     "authors": "Merve Ozkan and Caner Ozcan and Mahmut Selman Gokmen",
     "venue": "Operations Research Forum",
@@ -98,16 +108,6 @@
     "eprint_url": "",
     "citations": 0,
     "abstract": "In the solid wood panel industry, combining lamella pieces of consistent quality is critical for final product performance. However, most manufacturers still rely on manual classification by quality c"
-  },
-  {
-    "title": "DINO-MX: A Modular & Flexible Framework for Self-Supervised Learning",
-    "authors": "Mahmut Selman Gokmen and Cody Bumgardner",
-    "venue": "arXiv preprint arXiv:2511.01610",
-    "year": "2025",
-    "url": "https://arxiv.org/abs/2511.01610",
-    "eprint_url": "",
-    "citations": 0,
-    "abstract": "Vision Foundation Models (VFMs) have advanced representation learning through self-supervised methods. However, existing training pipelines are often inflexible, domain-specific, or computationally ex"
   },
   {
     "title": "Poisson Flow Consistency Training",
