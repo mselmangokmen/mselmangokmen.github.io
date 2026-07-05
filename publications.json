@@ -70,6 +70,16 @@
     "abstract": "U-Net-based deep learning models have garnered significant attention in recent years due to their strong denoising capabilities in image restoration tasks. This study critically evaluates both the str"
   },
   {
+    "title": "A histopathology aware DINO model with attention based representation enhancement",
+    "authors": "Merve Ozkan and Caner Ozcan and VK Cody Bumgardner and Mahmut S Gokmen",
+    "venue": "Scientific Reports",
+    "year": "2025",
+    "url": "https://www.nature.com/articles/s41598-025-31438-8",
+    "eprint_url": "",
+    "citations": 1,
+    "abstract": "Histopathological image analysis plays a critical role in modern medical diagnostics, particularly in the detection and classification of various types of cancer. This study proposes a method called H"
+  },
+  {
     "title": "DINO-MX: A Modular & Flexible Framework for Self-Supervised Learning",
     "authors": "Mahmut Selman Gokmen and Cody Bumgardner",
     "venue": "arXiv preprint arXiv:2511.01610",
@@ -78,16 +88,6 @@
     "eprint_url": "",
     "citations": 1,
     "abstract": "Vision Foundation Models (VFMs) have advanced representation learning through self-supervised methods. However, existing training pipelines are often inflexible, domain-specific, or computationally ex"
-  },
-  {
-    "title": "A histopathology aware DINO model with attention based representation enhancement",
-    "authors": "Merve Ozkan and Caner Ozcan and VK Cody Bumgardner and Mahmut S Gokmen",
-    "venue": "Scientific Reports",
-    "year": "2025",
-    "url": "https://www.nature.com/articles/s41598-025-31438-8",
-    "eprint_url": "",
-    "citations": 0,
-    "abstract": "Histopathological image analysis plays a critical role in modern medical diagnostics, particularly in the detection and classification of various types of cancer. This study proposes a method called H"
   },
   {
     "title": "Magnification-Aware Distillation (MAD): A Self-Supervised Framework for Unified Representation Learning in Gigapixel Whole-Slide Images",
