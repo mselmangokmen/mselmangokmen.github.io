@@ -44,7 +44,7 @@
     "authors": "Mahmut S Gokmen and Mitchell A Klusty and Evan W Damron and W Vaiden Logan and Aaron D Mullen and Caroline N Leach and Emily B Collier and Samuel E Armstrong and VK Cody Bumgardner",
     "venue": "AMIA Summits on Translational Science Proceedings",
     "year": "2026",
-    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13274312/",
+    "url": "https://arxiv.org/abs/2512.11837",
     "eprint_url": "",
     "citations": 0,
     "abstract": "Self-supervised learning (SSL) leverages vast unannotated medical datasets, yet steep technical barriers limit adoption by clinical researchers. We introduce Vision Foundry, a code-free, HIPAA-complia"
@@ -76,7 +76,7 @@
     "year": "2025",
     "url": "https://www.nature.com/articles/s41598-025-31438-8",
     "eprint_url": "",
-    "citations": 1,
+    "citations": 3,
     "abstract": "Histopathological image analysis plays a critical role in modern medical diagnostics, particularly in the detection and classification of various types of cancer. This study proposes a method called H"
   },
   {
