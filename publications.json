@@ -6,7 +6,7 @@
     "year": "2026",
     "url": "https://link.springer.com/article/10.1007/s11517-026-03523-1",
     "eprint_url": "",
-    "citations": 5,
+    "citations": 6,
     "abstract": "Coronary artery disease (CAD), one of the leading causes of mortality worldwide, necessitates effective risk assessment strategies, with coronary artery calcium (CAC) scoring via computed tomography ("
   },
   {
@@ -16,8 +16,18 @@
     "year": "2026",
     "url": "https://arxiv.org/abs/2603.23308",
     "eprint_url": "",
-    "citations": 1,
+    "citations": 2,
     "abstract": "Automated radiology report generation from 3D computed tomography (CT) volumes is challenging due to extreme sequence lengths, severe class imbalance, and the tendency of large language models (LLMs) "
+  },
+  {
+    "title": "Lesion Detection in CT with Frozen Self-Distilled Features: SALT, a Spatially Adaptive Label-Guided Temperature",
+    "authors": "Mahmut S Gokmen and Evan W Damron and Mitchell A Klusty and Caroline N Leach and Emily B Collier and VK Bumgardner",
+    "venue": "arXiv preprint arXiv:2608.05100",
+    "year": "2026",
+    "url": "https://arxiv.org/abs/2608.05100",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Self-supervised pretraining objectives are spatially uniform: the teacher temperature and the per-patch loss weight are identical everywhere in the image, so a lesion a few patches wide contributes no"
   },
   {
     "title": "DALE-CT: Depth-Aware Foundation Models for Computed Tomography",
@@ -44,7 +54,7 @@
     "authors": "Mahmut S Gokmen and Mitchell A Klusty and Evan W Damron and W Vaiden Logan and Aaron D Mullen and Caroline N Leach and Emily B Collier and Samuel E Armstrong and VK Cody Bumgardner",
     "venue": "AMIA Summits on Translational Science Proceedings",
     "year": "2026",
-    "url": "https://arxiv.org/abs/2512.11837",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13274312/",
     "eprint_url": "",
     "citations": 0,
     "abstract": "Self-supervised learning (SSL) leverages vast unannotated medical datasets, yet steep technical barriers limit adoption by clinical researchers. We introduce Vision Foundry, a code-free, HIPAA-complia"
@@ -52,9 +62,9 @@
   {
     "title": "Lung microbial dysregulation and TNF inhibition contribute to worsened nontuberculous mycobacterial lung disease",
     "authors": "Ethan Napier and Isaac Cinco and Ethan Stuart and Michael Davies and Caroline Leach and Evan Damron and Mahmut Gokmen and Amy Leestemaker-Palmer and Stephanie Nuss and Cody Bumgardner and Steven Kohama and Luiz Bermudez and Kevin Winthrop and Cristina Fuss and Eliot Spindel and Ilhem Messaoudi",
-    "venue": "",
+    "venue": "Research Square",
     "year": "2026",
-    "url": "https://www.researchsquare.com/article/rs-8703262/latest",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893067/",
     "eprint_url": "",
     "citations": 0,
     "abstract": "Nontuberculous mycobacteria (NTM) are ubiquitous bacteria that cause a spectrum of diseases, most notably pulmonary disease (NTMPD). The host factors contributing to the heightened susceptibility and "
@@ -100,16 +110,6 @@
     "abstract": "Whole-slide images (WSIs) contain tissue information distributed across multiple magnification levels, yet most self-supervised methods treat these scales as independent views. This separation prevent"
   },
   {
-    "title": "Deep Learning Based Defect Detection and Quality Classification on Lamella Pieces Used in Solid Wood Panel Production",
-    "authors": "Merve Ozkan and Caner Ozcan and Mahmut Selman Gokmen",
-    "venue": "Operations Research Forum",
-    "year": "2025",
-    "url": "https://link.springer.com/article/10.1007/s43069-025-00534-w",
-    "eprint_url": "",
-    "citations": 0,
-    "abstract": "In the solid wood panel industry, combining lamella pieces of consistent quality is critical for final product performance. However, most manufacturers still rely on manual classification by quality c"
-  },
-  {
     "title": "Poisson Flow Consistency Training",
     "authors": "Anthony Zhang and Mahmut Gokmen and Dennis Hein and Rongjun Ge and Wenjun Xia and Ge Wang and Jin Chen",
     "venue": "arXiv preprint arXiv:2510.21857",
@@ -118,6 +118,16 @@
     "eprint_url": "",
     "citations": 0,
     "abstract": "The Poisson Flow Consistency Model (PFCM) is a consistency-style model based on the robust Poisson Flow Generative Model++ (PFGM++) which has achieved success in unconditional image generation and CT "
+  },
+  {
+    "title": "Deep Learning Based Defect Detection and Quality Classification on Lamella Pieces Used in Solid Wood Panel Production",
+    "authors": "Merve Ozkan and Caner Ozcan and Mahmut Selman Gokmen",
+    "venue": "Operations Research Forum",
+    "year": "2025",
+    "url": "https://link.springer.com/article/10.1007/s43069-025-00534-w",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "In the solid wood panel industry, combining lamella pieces of consistent quality is critical for final product performance. However, most manufacturers still rely on manual classification by quality c"
   },
   {
     "title": "Kinect Calibration and Data Optimization For Anthropometric Parameters",
