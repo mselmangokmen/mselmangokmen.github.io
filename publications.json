@@ -16,7 +16,7 @@
     "year": "2026",
     "url": "https://arxiv.org/abs/2603.23308",
     "eprint_url": "",
-    "citations": 2,
+    "citations": 3,
     "abstract": "Automated radiology report generation from 3D computed tomography (CT) volumes is challenging due to extreme sequence lengths, severe class imbalance, and the tendency of large language models (LLMs) "
   },
   {
@@ -90,6 +90,16 @@
     "abstract": "Histopathological image analysis plays a critical role in modern medical diagnostics, particularly in the detection and classification of various types of cancer. This study proposes a method called H"
   },
   {
+    "title": "Magnification-Aware Distillation (MAD): A Self-Supervised Framework for Unified Representation Learning in Gigapixel Whole-Slide Images",
+    "authors": "Mahmut S Gokmen and Mitchell A Klusty and Peter T Nelson and Allison M Neltner and Sen-Ching Samson Cheung and Thomas M Pearce and David A Gutman and Brittany N Dugger and Devavrat S Bisht and Margaret E Flanagan and VK Bumgardner",
+    "venue": "arXiv preprint arXiv:2512.14796",
+    "year": "2025",
+    "url": "https://arxiv.org/abs/2512.14796",
+    "eprint_url": "",
+    "citations": 1,
+    "abstract": "Whole-slide images (WSIs) contain tissue information distributed across multiple magnification levels, yet most self-supervised methods treat these scales as independent views. This separation prevent"
+  },
+  {
     "title": "DINO-MX: A Modular & Flexible Framework for Self-Supervised Learning",
     "authors": "Mahmut Selman Gokmen and Cody Bumgardner",
     "venue": "arXiv preprint arXiv:2511.01610",
@@ -98,16 +108,6 @@
     "eprint_url": "",
     "citations": 1,
     "abstract": "Vision Foundation Models (VFMs) have advanced representation learning through self-supervised methods. However, existing training pipelines are often inflexible, domain-specific, or computationally ex"
-  },
-  {
-    "title": "Magnification-Aware Distillation (MAD): A Self-Supervised Framework for Unified Representation Learning in Gigapixel Whole-Slide Images",
-    "authors": "Mahmut S Gokmen and Mitchell A Klusty and Peter T Nelson and Allison M Neltner and Sen-Ching Samson Cheung and Thomas M Pearce and David A Gutman and Brittany N Dugger and Devavrat S Bisht and Margaret E Flanagan and VK Bumgardner",
-    "venue": "arXiv preprint arXiv:2512.14796",
-    "year": "2025",
-    "url": "https://arxiv.org/abs/2512.14796",
-    "eprint_url": "",
-    "citations": 0,
-    "abstract": "Whole-slide images (WSIs) contain tissue information distributed across multiple magnification levels, yet most self-supervised methods treat these scales as independent views. This separation prevent"
   },
   {
     "title": "Poisson Flow Consistency Training",
@@ -138,6 +138,16 @@
     "eprint_url": "",
     "citations": 1,
     "abstract": "Recently, through development of several 3d vision systems, widely used in various applications, medical and biometric fields. Microsoft kinect sensor have been most of used camera among 3d vision sys"
+  },
+  {
+    "title": "Lung microbial dysregulation and TNF inhibition are associated with worsened nontuberculous mycobacterial lung disease",
+    "authors": "Ethan Napier and Isaac Cinco and Ethan V Stuart and Michael H Davies and Caroline N Leach and Evan Damron and Mahmut Gokmen and Amy Leestemaker-Palmer and Stephanie Nuss and Cody Bumgardner and Steven G Kohama and Luiz Bermudez and Kevin Winthrop and Cristina Fuss and Eliot Spindel and Ilhem Messaoudi",
+    "venue": "Frontiers in Microbiology",
+    "year": "",
+    "url": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2026.1923035/full",
+    "eprint_url": "",
+    "citations": 0,
+    "abstract": "Nontuberculous mycobacteria (NTM) are ubiquitous bacteria that cause a spectrum of diseases, most notably pulmonary disease (NTMPD). The host factors contributing to the heightened susceptibility and "
   },
   {
     "title": "A Specification-Driven Framework for Self-Supervised Learning in Specialized Vision Domains",
